@@ -1,6 +1,3 @@
 # JAVA
 
-## 자바의 정석 정리
-
-1. 객체지향
-2. 예외처리
+## (https://github.com/JeHa-An/KOSTA/blob/main/JAVA%EC%9D%98%20%EC%A0%95%EC%84%9D/JAVA%EC%9D%98%20%EC%A0%95%EC%84%9D.md "JAVA의 정석")
