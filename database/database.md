@@ -41,7 +41,7 @@
 ## HeidisSQL
 DB 배우기 위한 Tool 
 
-## SQL
+## [SQL](https://github.com/JeHa-An/KOSTA/blob/main/database/SQL.md)
 - DBMS 제작 회사와 독립적
 - 다른 시스템으로 이식성이 좋다
 - 표준이 계속 발전 중
