@@ -4,15 +4,17 @@
 ```
 int
 VARCHAR(); --()에 30이 들어갔다면 30이상이 들어오면 오류
-DATE -- 2023-09-04 -(하이푼)으로 구분하며 날짜끼리 비교가 가능 
-## 데이터 조회
-`SQL은 대소문자를 구분하지 않으며 데이터의 시작 index는 1이다`
-- SELECT FROM 테이블의 데이터를 조회할 때 사용
+DATE -- 2023-09-04 -(하이푼)으로 구분하며 날짜끼리 비교가 가능
+```
+## 데이터 조회 SELECT
+SQL은 대소문자를 구분하지 않으며 데이터의 시작 index는 1이다.
+
+- select from 테이블의 데이터를 조회할 때 사용
 ```SQL
 SELECT * FROM emp; -- *의 의미는 전체 컬럼을 의미, emp는 조회하고자 하는 테이블명
 SELECT empno, ename FROM emp; -- 조회하고 싶은 컬럼
 ```
-- WHERE 행에 대한 조건문
+- where 행에 대한 조건문
 ```SQL
 SELECT * FROM emp WHERE deptno = 10; -- 같다는 = 하나만 사용
 SELECT * FROM emp WHERE deptno > 10; -- emp 테이블에서 deptno가 10보다 큰 행들을 조회
@@ -20,12 +22,12 @@ SELECT * FROM Student where grade = 2 OR grade = 3; -- grade >= 2 AND grade <= 3
 SELECT * FROM emp WHERE deptno=10 AND sal>=2000; -- 두 개의 컬럼 조건 설정 가능
 SELECT * FROM student WHERE (deptno1 = 101 OR deptno2 = 101) AND grade IN(1,2); 
 ```
-- IN
+- in
 ```SQL
 SELECT * FROM student WHERE grade IN(2,3);
 SELECT empno, ename, job FROM emp WHERE job = 'CLERK' OR job = 'SALESMAN'; -- 문자형은 ''
 ```
-- NOT
+- not
 ```SQL
 SELECT * FROM student WHERE NOT grade=4; -- student 테이블에서 grade=4 가 아닌 학생
 SELECT * FROM student WHERE grade NOT IN(4); -- IN을 사용해 grade의 값이 4가 아닌 학생
@@ -39,6 +41,13 @@ SELECT empno 사번, ename "이 름", job 직무 FROM emp WHERE job = 'CLERK' OR
 ```SQL
 SELECT * FROM professor WHERE hpage is null;
 SELECT * FROM professor WHERE hpage is NOT null;
+SELECT profno, NAME, pay + bonus FROM professor WHERE bonus IS not NULL; -- int 형 끼리 더해서 조회 가능
+```
+
+-ifnull 컬럼이 0일 경우 대체하는 값 지정
+```sql
+SELECT profno, NAME, pay + bonus FROM professor; -- int 와 null을 더하면 null로 출력
+SELECT profno, NAME, pay + IFNULL (bonus, 0) FROM professor; -- bonus가 null이면 0 (DBMS마다 다름)
 ```
 - between A and B B값 포함, 날짜도 가능
 ```sql
@@ -50,10 +59,31 @@ SELECT * FROM student WHERE birthday BETWEEN '1976-01-01' AND '1977-01-01' -- A�
 ```sql
 SELECT * FROM emp order BY sal ASC; -- 오름차순(기본)
 SELECT * FROM emp ORDER BY sal DESC; -- 내림차순
-
 SELECT studno, NAME, birthday, deptno1 FROM student WHERE grade IN(4) ORDER BY birthday;
 SELECT studno, NAME, birthday, deptno1 FROM student WHERE grade IN(4) ORDER BY 3;
+SELECT * FROM emp ORDER BY deptno ASC, sal DESC; -- deptno값이 같으면 sal값을 비교 ASC DESC는 각각 정해준다
 ```
+
+- distinct 중복 행(row) 제거
+```sql
+SELECT DISTINCT deptno1 FROM student;
+```
+
+- like 컬럼의 문자열에 특정 문자열이 포함된 것을 거를때 사용 ex) name의 성이 '서'인 학생 조회
+```sql
+SELECT * FROM student WHERE NAME LIKE '서%'; -- '서'로 시작하는, % 아무거나 null이 아닌 문자
+SELECT * FROM student WHERE NAME LIKE '%서'; -- '서'로 끝나는
+SELECT * FROM student WHERE NAME LIKE '%서%'; -- 서를 포함한
+SELECT * FROM emp WHERE job LIKE '_A%'; -- _ 이 자리에 한 char가 와햐한다. 즉 두번째가 A인 job을 찾는다.
+```
+
+- concat 문자열을 합할때 사용
+```sql
+SELECT CONCAT(ename, '(',job,')') FROM emp; -- 두 개의 컬럼을 조합해 한 컬럼으로 출력 하지만 컬럼명이 없음
+SELECT CONCAT(ename, '(',job,')') as 'ename_job' FROM emp; -- as로 이름을 다시 지어줄 수 있다
+SELECT CONCAT(ename, '''s sal is $', sal) AS info FROM emp; -- ename`s sal is $4000
+```
+<br> 
 ## join
 ```sql
 SELECT gno, gname, point  FROM gogak WHERE POINT >= 600001 AND POINT <= 700000 // gift 테이블을 보고 SQL문 작성 불편함
