@@ -92,6 +92,11 @@ SELECT FORMAT(250500.1234, 2); -- 250500.12
 SELECT INSERT('http://naver.com', 8, 5, 'kosta');  -- http://kosta.com , 8번째 index 8 'n'에서부터 5개 ('kosta')변경
 SELECT studno, NAME, INSERT(jumin, 8, 6,'******') AS 'jumin' FROM student; -- 9904091******
 SELECT gno 고객번호, INSERT(gname, 2, 1, '*') AS 이름 FROM gogak; -- 서*민
+
+SELECT SUBSTR(email, INSTR(email, '@')) FROM professor; -- '@'앞의 index 반환
+SELECT SUBSTR(email, INSTR(email, '@')+1) FROM professor; -- '@'앞의 index 부터 끝까지 출력 abc.net
+SELECT LENGTH(SUBSTR(email, INSTR(email, '@')+1)) FROM professor; -- '@'앞의 index 부터 끝까지 출력 abc.net
+SELECT email, insert(email, INSTR(email, '@')+1, LENGTH(SUBSTR(email, INSTR(email, '@')+1)), 'kosta.com') FROM professor;
 ```
 - instr(컬럼명, 찾을 문자) 문자열 내에서 특정 문자의 위치(index)를 구한다
 ```sql
@@ -109,13 +114,11 @@ SELECT substr(tel, INSTR(tel, ')')+1, INSTR(tel, '-') - INSTR(tel, ')')-1)FROM s
 ```sql
 SELECT LENGTH(tel) FROM student;
 SELECT LENGTH(email) FROM student;
-SELECT SUBSTR(email, INSTR(email, '@')) FROM professor;
-SELECT email, insert(email, INSTR(email, '@')+1, LENGTH(SUBSTR(email, INSTR(email, '@')+1)), 'kosta.com') FROM professor;
 SELECT ename, LENGTH(ename) FROM emp; -- 영어는 하나 당 1byte
 SELECT NAME, LENGTH(NAME) FROM student; -- MariaDB에서 한글은 한 글자는 3byte 그래서 길이는 9
 SELECT NAME, CHAR_LENGTH(NAME) FROM student; -- 문자의 개수 3
 ```
-
+- [insert, instr, substr, length 사용 예제]()
 - substring() = substr()
 ```sql
 SELECT SUBSTR('http://naver.com', 8, 5);
