@@ -118,7 +118,7 @@ SELECT ename, LENGTH(ename) FROM emp; -- 영어는 하나 당 1byte
 SELECT NAME, LENGTH(NAME) FROM student; -- MariaDB에서 한글은 한 글자는 3byte 그래서 길이는 9
 SELECT NAME, CHAR_LENGTH(NAME) FROM student; -- 문자의 개수 3
 ```
-- [insert, instr, substr, length 사용 예제]()
+- [insert, instr, substr, length 사용 예제](https://github.com/JeHa-An/KOSTA/blob/main/database/SQL_String_EX01.md)
 - substring() = substr()
 ```sql
 SELECT SUBSTR('http://naver.com', 8, 5);
