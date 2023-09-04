@@ -10,6 +10,3 @@
 |Object get(int index)|
 |int indexOf(Object o)|
 
-## [ArrayList](./ArrayList)
-가장 많이 사용되는 컬렉션 클래스이며, 
-
