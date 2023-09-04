@@ -1,9 +1,9 @@
 # SQL 문법
-
+클라이언트 명령 프롬프트 사용 use kosta(database name) 지정 
 ## 자료형
 ```
 int
-VARCHAR(); --()에 30이 들어갔다면 30이상이 들어오면 오류
+VARCHAR(); -- ()에 30이 들어갔다면 30초과시 오류
 DATE -- 2023-09-04 -(하이푼)으로 구분하며 날짜끼리 비교가 가능
 ```
 ## 데이터 조회 SELECT
@@ -82,6 +82,34 @@ SELECT * FROM emp WHERE job LIKE '_A%'; -- _ 이 자리에 한 char가 와햐한
 SELECT CONCAT(ename, '(',job,')') FROM emp; -- 두 개의 컬럼을 조합해 한 컬럼으로 출력 하지만 컬럼명이 없음
 SELECT CONCAT(ename, '(',job,')') as 'ename_job' FROM emp; -- as로 이름을 다시 지어줄 수 있다
 SELECT CONCAT(ename, '''s sal is $', sal) AS info FROM emp; -- ename`s sal is $4000
+```
+- format 숫자형 데이터의 포맷 지정 반올림 자리로 받은 값+1에서 반올림과 콤마를 붙히고 String 타입으로 반환
+```sql
+SELECT FORMAT(250500.1234, 2); -- 250500.12 
+```
+- insert(컬럼명, fromindex, 추가할 문자 수, 추가할문자열) 문자열 내의 지정된 위치에 특정 문자 수만큼 변경
+```sql
+SELECT INSERT('http://naver.com', 8, 5, 'kosta');  -- http://kosta.com , 8번째 index 8 'n'에서 5개 ('kosta')변경
+SELECT studno, NAME, INSERT(jumin, 8, 6,'******') AS 'jumin' FROM student; -- 9904091******
+SELECT gno 고객번호, INSERT(gname, 2, 1, '*') AS 이름 FROM gogak; -- 서*민
+```
+- instr 문자열 내에서 특정 문자의 위치(index)를 구한다
+```sql
+SELECT INStr('http://naver.com', 'n'); -- 8
+SELECT INSTR(tel, ')') FROM student; -- 3
+```
+- substr(컬럼명, fromindex, toindex) 문자열 내에서 부분 문자열 추출
+```sql
+SELECT SUBSTR(tel, 1) FROM student; -- index 1부터 끝까지
+SELECT SUBSTR(tel,1,INSTR(tel, 1, ')' - 1))FROM student; -- 02, 053 컬럼 tel의 index 1 부터 INSTR(tel, 1, ')' - 1 까지
+SELECT studno, NAME, jumin from student WHERE SUBSTR(jumin, 3, 2) = '09'; -- where 사용해 조건 가능
+SELECT substr(tel, INSTR(tel, ')')+1, INSTR(tel, '-') - INSTR(tel, ')')-1)FROM student;
+```
+- length 문자열 길이 구하기
+```sql
+SELECT LENGTH(tel) FROM student;
+SELECT LENGTH(email) FROM student;
+SELECT SUBSTR(email, INSTR(email, '@')) FROM professor; -- 
 ```
 <br> 
 ## join
