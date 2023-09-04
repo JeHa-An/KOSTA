@@ -9,53 +9,61 @@
 
 ## 메서드 `Collection은 인터페이스이고, Collections는 클래스이다`
 `선언 전 import java.util.ArrayList `
-- ArrayList()
+### ArrayList()
 ```java
+  ArrayList list1 = new ArrayList(); // 기본 capacity 10
   ArrayList list1 = new ArrayList(10); // 크기가 10인 ArrayList 생성 
 ```
 
-- Boolean add(Object o), void add(int index, Object element)
+### Boolean add(Object o), void add(int index, Object element)
 ```java
   list1.add(new Integer(1)); // ArrayList의 마지막에 객체를 추가(성공하면 true)
   list1.add(new Integer(3));
   list1.add(new Integer(0));
   list1.add(3, new Integer(2)); // 지정위치(index)에 객체를 저장
 ```
-- Object remove(int index), Booleam remove(Object o) 객체를 제거
+### Object remove(int index), Booleam remove(Object o)
+객체를 제거
 ```java
   list1.remove(1); // [1,0,2] // index 1의 객체 3을 삭제
   list1.remove(new Integer(0)); // [1,2] 객체 0을 삭제 후, true or false로 반환
 ```
 
-- Object get(int index) 지정된 위치(index)에 저장된 객체를 반환한다.
+### Object get(int index)
+지정된 위치(index)에 저장된 객체를 반환한다.
 ```java
   list1.get(1); // 3
 ```
-- int size() ArrayList에 저장된 객체의 개수를 반환한다.
+### int size()
+ArrayList에 저장된 객체의 개수를 반환한다.
 ```java
   list1.size(); // 4
 ```
-- List subList(int fromIndex, int toIndex) from 부터 to 사이에 저장된 객체를 반환
+### List subList(int fromIndex, int toIndex)
+from 부터 to 사이에 저장된 객체를 반환
 ```java
   // list1 : [1,3,0,2]
   ArrayList list2 = new ArrayList(list1.subList(0, 2)); // [1,3]
 ```
 
-- void sort(Comparator c) 지정된 비교자(comparator)로 ArrayList를 정렬
+### void sort(Comparator c)
+지정된 비교자(comparator)로 ArrayList를 정렬
 ```java
 Collections.sort(list1);
   // list1 : [0,1,2,3]
   // list2 : [1,3]
 ```
 
-- boolean contains(Object o) 지정된 객체(o)가 ArrayList에 포함되어 있는지 확인
+### boolean contains(Object o)
+지정된 객체(o)가 ArrayList에 포함되어 있는지 확인
 ```java
   list1.contains(list2); // false
   list1.contains(new Integer(2)); // true
   list1.containsAll(list2) // true, containsAll 사용해 list1이 list2의 모든 요소를 포함하고 있을때 true
 ```
 
-- boolean retainAll(Collection c) ArrayList에 저장된 객체 중 주어진 컬렉션과 공통된 것들만 남기고 나머지는 삭제
+### boolean retainAll(Collection c)
+ArrayList에 저장된 객체 중 주어진 컬렉션과 공통된 것들만 남기고 나머지는 삭제
 ```java
 // list1 : [0,1,2,3] , list2 : [3,0]
 list1.retainAll(list2) // list1 : [0,3], list2 : [3,0] 
