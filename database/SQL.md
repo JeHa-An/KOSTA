@@ -92,11 +92,6 @@ SELECT FORMAT(250500.1234, 2); -- 250500.12
 SELECT INSERT('http://naver.com', 8, 5, 'kosta');  -- http://kosta.com , 8번째 index 8 'n'에서부터 5개 ('kosta')변경
 SELECT studno, NAME, INSERT(jumin, 8, 6,'******') AS 'jumin' FROM student; -- 9904091******
 SELECT gno 고객번호, INSERT(gname, 2, 1, '*') AS 이름 FROM gogak; -- 서*민
-
-SELECT SUBSTR(email, INSTR(email, '@')) FROM professor; -- '@'앞의 index 반환
-SELECT SUBSTR(email, INSTR(email, '@')+1) FROM professor; -- '@'앞의 index 부터 끝까지 출력 abc.net
-SELECT LENGTH(SUBSTR(email, INSTR(email, '@')+1)) FROM professor; -- '@'앞의 index 부터 끝까지 출력 abc.net
-SELECT email, insert(email, INSTR(email, '@')+1, LENGTH(SUBSTR(email, INSTR(email, '@')+1)), 'kosta.com') FROM professor;
 ```
 - instr(컬럼명, 찾을 문자) 문자열 내에서 특정 문자의 위치(index)를 구한다
 ```sql
