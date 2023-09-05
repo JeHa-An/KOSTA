@@ -194,7 +194,7 @@ SELECT NOW(); -- 2023-09-04 17:50:12
 SELECT hiredate, DATEDIFF(CURDATE(), hiredate) FROM emp;
 SELECT DATEDIFF(CURDATE(), '1999-04-09')일수;
 ```
-## date_format
+### date_format
 ```sql
 SELECT DATE_FORMAT('2017-06-15', "%m %d %y"); -- 06 15 17
 SELECT DATE_FORMAT('2017-06-15', "%M %D %Y"); -- June 15th 2017
@@ -294,10 +294,60 @@ GROUP BY deptno1, grade
 HAVING AVG(weight) > 50
 ORDER BY deptno1, grade;
 ```
+## CASE
+조건에 따라서 값을 지정
+```sql
 
+SELECT NAME, tel, 
+		case SUBSTR(tel, 1, INSTR(tel, ')') - 1)
+			when '02' then '서울'
+			when '031' then '경기'
+			when '051' then '부산'
+			when '052' then '울산'
+			when '055' then '경남'
+		END 지역
+FROM student
+WHERE deptno1=101;
+```
 <br> 
 
 ## join
+각 테이블의 곱해 조회해 데이터가 많아져 느려질 수 있다. 
 ```sql
-SELECT gno, gname, point  FROM gogak WHERE POINT >= 600001 AND POINT <= 700000 -- gift 테이블을 보고 SQL문 작성 불편함
+-- ANSI join (표준)
+SELECT e.empno, e.ename, d.dname
+FROM emp e INNER JOIN dept d -- INNER 생략가능
+ON e.DEPTNO=d.deptno
+WHERE e.deptno=10;
+```
+### INNER, LEFT, RIGHT, UNION
+- INNER 양쪽에 존재하는 테이블의 항목을 모두 가져온다
+- LEFT 왼쪽에 있는 테이블의 항목을 모두 가져온다
+- RIGHT 오른쪽에 있는 테이블의 항목을 모두 가져온다
+- UNION 테이블을 합친다.
+```sql
+SELECT s.studno, s.name, p.name
+FROM student s LEFT JOIN professor p -- 왼쪽에 있는 s테이블의 항목을  모두 가져온다.
+ON s.profno = p.profno;
+UNION -- left right 합친거
+SELECT s.studno, s.name, p.name
+FROM student s right JOIN professor p -- 왼쪽에 있는 s테이블의 항목을  모두 가져온다.
+ON s.profno = p.profno;
+```
+```sql
+-- student, exam_01 테이블을 이용하여 학번, 이름, 시험점수 조회
+-- ANSI
+SELECT s.studno, s.name, e.total
+FROM student s JOIN exam_01 e
+ON s.studno=e.studno;
+-- 일반
+SELECT s.studno, s.name, e.total
+FROM student s , exam_01 e
+WHERE s.studno=e.studno;
+```
+### 3개 이상의 테이블 join
+SELECT s.studno, s.name, s.deptno1, p.name
+FROM student s JOIN department d ON s.deptno1=d.deptno
+left JOIN professor p ON s.profno=p.profno;
+
 ```
