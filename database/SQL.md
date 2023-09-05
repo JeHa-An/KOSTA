@@ -312,18 +312,15 @@ WHERE deptno1=101;
 <br> 
 
 ## join
-각 테이블의 곱해 조회해 데이터가 많아져 느려질 수 있다. 
 ```sql
 -- ANSI join (표준)
-SELECT e.empno, e.ename, d.dname
-FROM emp e INNER JOIN dept d -- INNER 생략가능
-ON e.DEPTNO=d.deptno
-WHERE e.deptno=10;
+SELECT A.컬럼 B.컬럼
+FROM 기준테이블 A JOIN 조인테이블 B ON A.기준키 = B.기준키
 ```
 ### INNER, LEFT, RIGHT, UNION
-- INNER 양쪽에 존재하는 테이블의 항목을 모두 가져온다
-- LEFT 왼쪽에 있는 테이블의 항목을 모두 가져온다
-- RIGHT 오른쪽에 있는 테이블의 항목을 모두 가져온다
+- INNER 기준 테이블과 조인 테이블의 중복된 값을 보여준다
+- LEFT 왼쪽 테이블을 기준으로 있는 테이블의 항목을 모두 가져온다 (기준 테이블의 결과 + 기준테이블의 중복 값을 보여준다)
+- RIGHT 오른쪽 테이블을 기준으로 JOIN 한다 (기준 테이블의 결과 + 기준테이블의 중복 값을 보여준다)
 - UNION 테이블을 합친다. (공통된 것을 삭제)
 ```sql
 SELECT s.studno, s.name, p.name
