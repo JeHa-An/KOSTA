@@ -324,7 +324,7 @@ WHERE e.deptno=10;
 - INNER 양쪽에 존재하는 테이블의 항목을 모두 가져온다
 - LEFT 왼쪽에 있는 테이블의 항목을 모두 가져온다
 - RIGHT 오른쪽에 있는 테이블의 항목을 모두 가져온다
-- UNION 테이블을 합친다.
+- UNION 테이블을 합친다. (공통된 것을 삭제)
 ```sql
 SELECT s.studno, s.name, p.name
 FROM student s LEFT JOIN professor p -- 왼쪽에 있는 s테이블의 항목을  모두 가져온다.
@@ -346,8 +346,27 @@ FROM student s , exam_01 e
 WHERE s.studno=e.studno;
 ```
 ### 3개 이상의 테이블 join
+```sql
 SELECT s.studno, s.name, s.deptno1, p.name
 FROM student s JOIN department d ON s.deptno1=d.deptno
 left JOIN professor p ON s.profno=p.profno;
+```
+### natural 
+두 테이블의 공통된 속성을 찾아 같은 값을 갖는 항목끼리 결합 mariaDB 사용 불가 LEFT. RIGHT 사용
+### Using
+join하는 on의 컬럼명이 같으면 USING(컴럼명)사용
+### self join
+저가 저산의 테이블에 자신의 테이블을 조인
+```sql
+-- emp 테이블을 이용하여 직원의 사번, 이름, 담당 매니저 사번과 이름 조회
+SELECT e1.EMPNO, e1.ENAME, e2.EMPNO, e2.ename
+FROM emp e1 left JOIN emp e2
+ON e1.EMPNO = e2.MGR;
+
+-- student, department 테이블을 이용하여, 학번, 이름, 제1전공명, 제2전공명 조회 self join 2번
+SELECT s.studno, s.name, d1.dname '제1 전공명', d2.dname '제2 전공명'
+FROM student s JOIN department d1 ON s.deptno1 = d1.deptno
+LEFT JOIN department d2 ON s.deptno2 = d2.deptno;
 
 ```
+## subquery
