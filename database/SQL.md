@@ -107,11 +107,11 @@ SELECT gno 고객번호, INSERT(gname, 2, 1, '*') AS 이름 FROM gogak; -- 서*�
 ### instr(컬럼명, 찾을 문자)
 문자열 내에서 특정 문자의 위치(index)를 구한다
 ```sql
-SELECT INStr('http://naver.com', 'n'); -- 8
+SELECT INSTR('http://naver.com', 'n'); -- 8
 SELECT INSTR(tel, ')') FROM student; -- 3
 ```
 ### substr(), substring()
-substr(컬럼명, fromindex, toindex)문자열 내에서 부분 문자열 추출
+substr(컬럼명, fromindex, 몇개의 문자)문자열 내에서 부분 문자열 추출
 ```sql
 SELECT SUBSTR('http://naver.com', 8, 5);
 SELECT SUBSTRING('http://naver.com', 8, 5);
@@ -165,26 +165,134 @@ SELECT sal, lpad(ename, 20, '#') 이름 FROM emp; -- ###############JONES
 SELECT sal, rpad(ename, 20, '#') 이름 FROM emp; -- SMITH###############
 SELECT LPAD(email, 20, '1234566789') FROM professor; -- 12345captain@abc.net 여유 있는 만큼 채워 넣는다
 ```
-
+##  날짜 함수
 ### curdate(), current_date()
 현재 실행 중인 프로그램의 날짜
 ```sql
 SELECT CURDATE(); -- 2023-09-04
 SELECT CURRENT_DATE(); -- 2023-09-04
-SELECT CURRENT_DATE() + 1; -- 20230905
+SELECT CURRENT_DATE() + 1; -- 20230905 int형으로 변환
 ```
 ### adddate(), date_add()
 연, 월, 일을 더하거나 뺀다 (DAY가 기본값)
 ```sql
-SELECT adddate(curdate(), INTERVAL 1 DAY); -- 2023-09-05 
-SELECT adddate(curdate(), INTERVAL -1 MONTH); -- 2023-08-04
-SELECT adddate(curdate(), INTERVAL -1 year); -- 2022-09-04
+SELECT adddate(CURDATE(), INTERVAL 1 DAY); -- 2023-09-05 
+SELECT adddate(CURDATE(), INTERVAL -1 MONTH); -- 2023-08-04
+SELECT adddate(CURDATE(), INTERVAL -1 year); -- 2022-09-04
+SELECT ADDTIME(CURTIME(), '1:10:5'); -- add 1hour 10 minite 5 second
+SELECT ADDTIME(NOW(), '2 1:10:5'); -- add 2day 1 hour 10minite 5 second
 SELECT hiredate,  ADDDATE(hiredate, INTERVAL +10 YEAR) AS "10년 기념일" FROM emp; -- 1981-11-17 , 1991-11-17
 ```
 ### curtime() ,current_time(), now()
 ```sql
 SELECT CURTIME(), CURRENT_TIME(); -- 17:50:53 , 17:50:53
 SELECT NOW(); -- 2023-09-04 17:50:12
+```
+### datediff()
+날짜 일수 차이
+```sql
+SELECT hiredate, DATEDIFF(CURDATE(), hiredate) FROM emp;
+SELECT DATEDIFF(CURDATE(), '1999-04-09')일수;
+```
+## date_format
+```sql
+SELECT DATE_FORMAT('2017-06-15', "%m %d %y"); -- 06 15 17
+SELECT DATE_FORMAT('2017-06-15', "%M %D %Y"); -- June 15th 2017
+SELECT DATE_FORMAT(NOW(), "%M %d %Y %h %i %s %W"); -- September 05 2023 10 02 36
+-- 월 : %M(September), %b(Sep), %m(9),
+-- 연 : %Y(2023), %y(23)
+-- 일 : %D(8th), %d(08), %e(8)
+-- 요일 : %W(Tuesday), %d(Tue)
+-- 시간 : %H(13), %h(1)
+-- %r : hh:mm:ss AM,PM
+-- 분 : %i
+-- 초 : %S
+```
+
+### DAY(), DAYOFMONTH()
+```sql
+DAY(시분초다 있음YEAR, HOUR, MONTH, SECOND)
+SELECT hiredate, DAY(hiredate) FROM emp;
+SELECT hiredate, DAYOFMONTH(hiredate) FROM emp;
+```
+
+### DAYNAME()
+날짜에서 요일 추출
+```sql
+SELECT hiredate, DAYNAME(hiredate) FROM emp;
+SELECT hiredate, DAYOFWEEK(hiredate) FROM emp; -- 숫자로 바뀜
+```
+### EXTRACT
+날짜 정보 추출 ()
+```sql
+SELECT CURDATE(), EXTRACT(MONTH FROM CURDATE()) AS MONTH; -- 9
+SELECT CURDATE(), EXTRACT(YEAR FROM CURDATE()) AS YEAR; -- 2023
+SELECT CURDATE(), EXTRACT(DAY FROM CURDATE()) AS DAY; -- 5
+SELECT CURDATE(), EXTRACT(WEEK FROM CURDATE()) AS DAY;
+SELECT CURDATE(), EXTRACT(QUARTER FROM CURDATE()) AS QUARTER;
+SELECT CURDATE(), EXTRACT(HOUR FROM NOW()) AS HOUR;
+SELECT CURDATE(), EXTRACT(MINUTE FROM NOW()) AS MINUTE;
+SELECT CURDATE(), EXTRACT(SECOND FROM NOW()) AS SECOND;
+```
+### TIME_TO_SEC()
+시간을 초로 변환
+```sql
+SELECT CURTIME(), TIME_TO_SEC(CURTIME());
+SELECT CURTIME(), time_to_sec(TIMEDIFF(CURTIME(), '08:48:27'));
+```
+
+## 숫자 함수
+### count()
+조건에 만족하는 레코드(행) 수
+```sql
+SELECT COUNT(*) FROM emp;
+SELECT COUNT(comm) FROM emp; -- 컬럼명이 매개변수로 사용시 null인 레코드는 제외
+SELECT COUNT(*) FROM emp WHERE deptno=10; -- deptno가 10인 컬럼의 수
+```
+### sun ()
+컬럼 전체의 총합
+```sql
+SELECT SUM(sal) FROM emp; -- emp 테이블의 sal의 총합
+SELECT SUM(sal) FROM emp WHERE deptno=10; -- emp테이블에서 deptno가 10인 sal의 총합
+```
+### avg()
+컬럼 전체의 평균
+```sql
+SELECT SUM(sal), SUM(sal)/COUNT(*), AVG(sal) FROM emp; // SUM(sal)/COUNT(*) 값과 AVG(SAL)값과 동일
+SELECT SUM(comm), COUNT(comm), COUNT(*), SUM(comm)/COUNT(*), AVG(ifnull(comm, 0)) FROM emp;
+```
+### max()
+```sql
+SELECT MAX(sal) FROM emp;
+SELECT ename, MAX(sal) FROM emp; -- ename 컬럼의 값과 MAX(sal)이 같은 행이 아니다 이유-찾는 중
+```
+### min()
+```sql
+SELECT MIN(sal) FROM emp; -- emp 테이블의 sal 컬럼의 최솟값을 가진 컬럼 
+SELECT ename, MIN(sal) FROM emp; -- 오류
+SELECT profno, NAME, pay, ifnull(bonus, 0), pay*12+IFNULL(bonus, 0) FROM professor; 
+```
+## GROUP BY, HAVING
+GROUP BY 특정 컬럼을 그룹핑해 특정 그룹별로 출력, HAVING 그룹핑한 것에 대한 조건은 HAVING 절을 사용
+```sql
+SELECT deptno, job, COUNT(*), SUM(sal) FROM emp GROUP BY deptno, job; --  GROUP BY 선택된 컬럼이 셀렉트 컬럼에 올 수 있다. 
+SELECT deptno, job, COUNT(*), SUM(sal) FROM emp GROUP BY deptno; -- job은 설렉트 컬럼에 써도 오류는 나지 않는다.
+
+SELECT deptno1, COUNT(*) FROM student GROUP BY deptno1;
+SELECT grade, format(avg(height),1) FROM student GROUP BY grade;
+
+SELECT deptno, ename,  MAX(sal) FROM emp GROUP BY deptno; -- 잘못 된 데이터가 나옴
+SELECT deptno no, MAX(sal) FROM emp GROUP BY no;
+
+-- emp 테이블에서 평균 급여가 2000이상인 부서의 부서번호와 평균급여 조회
+SELECT deptno, AVG(sal) FROM emp GROUP BY deptno HAVING AVG(sal)>=2000;
+
+-- student 테이블에서 각확과와 학년별 평균 몸구게, 최대/최소 몸무게를 조회하시오
+SELECT deptno1, grade, COUNT(*), AVG(weight), MAX(weight), MIN(weight) 
+FROM student 
+GROUP BY deptno1, grade
+HAVING AVG(weight) > 50
+ORDER BY deptno1, grade;
 ```
 
 <br> 
