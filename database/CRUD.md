@@ -126,31 +126,89 @@ INSERT INTO temp3 VALUES('kang', -1); -- age 범위 오류
 </details>
 
 ### INSERT
-&nbsp;insert into table_name(column_name1, column_name2,...) value(value1, value2,...)
+&nbsp;INSERT INTO table_name(column_name1, column_name2,...) VALUES(value1, value2,...);
 ```sql
 INSERT INTO user (id, NAME) VALUES('kong', '공길동');
 INSERT INTO user (NAME, id) VALUES('공길동', 'kong');
 INSERT INTO user VALUES('park', '박길동') -- 컬럼목록을 생략할 경우 컬럼순으로 모든 값 저장
 ```  
 
-&nbsp;insert into select : select의 결과값을 테이블에 삽입
+&nbsp;INSERT INTO emp_sub (column_name1, column_name2,...)  
+SELECT column_name1, column_name2 FROM table_name where 조건; : select의 결과값을 테이블에 삽입
 ```sql
+INSERT INTO emp_sub (column_name1, column_name2,...)
+SELECT column_name1, column_name2 FROM table_name where;
+
 INSERT INTO emp_sub (id,NAME)
-SELECT empno, ename FROM emp where deptno=10;
+SELECT empno, ename FROM emp;
 ```
 ### UPDATE
-&nbsp;update table_name set column_name1=value1, column_name2=value2,.... where 조건;
+&nbsp;UPDATE table_name SET column_name1=value1, column_name2=value2,.... where 조건;
 ```sql
+-- emp에서 커미션이 없는 사람은 100을 준다.
+UPDATE emp SET comm=100 where comm IS NULL OR comm=0;
 
+-- deptno = 10인 부서만 comm을 급여의 10% 더 준다.
+UPDATE emp SET comm=comm+sal*0.1 WHERE deptno=10;
+```
+
+### DELETE
+&nbsp;DELETE FROM table_name WHERE 조건;
+```sql
+-- emp에서 이름이 hong인 데이터 삭제
+DELETE FROM emp WHERE ename='hong';
+
+-- emp에서 부서번호가 40인 데이터 삭제
+DELETE FROM emp WHERE deptno=40;
 ```
 
 ### ARTICLE
 
 > ## DCL (Data Control Language)  
  grant(권한 주기), revoke(권한 뺏기)
+### 계정 생성
+```sql
+CREATE USER user_name IDENTIFIED BY 'password'; -- 계정 생성(only root)
+CREATE USER user_name IDENTIFIED BY 'PASSWORD'; -- password 변경
+DROP USER user_name; -- 계정 삭제
+```
+### GRANT 
+```sql
+--  kosta 계정에 testdb SELECT, INSERT, UPDATE 권한 부여
+GRANT SELECT, INSERT, UPDATE ON testdb.* TO 'kosta';
 
+-- kosta 계정에 testdb에 모든 권한 부여
+GRANT ALL PRIVILEGES ON testdb.* TO 'kosta';
+
+-- kosta 계정의 모든 DB에 모든 권한 부여
+GRANT ALL PRIVILEGES ON *.* TO 'kosta';
+
+SHOW GRANTS FOR 'kosta'; 
+-- GRANT USAGE ON *.* TO 'kosta' : USAGE 권한 지정자는 권한 없음을 나타냄.(권한은 없지만 계정은 있다)
+-- ALL PRIVILEGES ON *.* TO `kosta` : 모든 권한이 있다.
+```
+
+### REVOKE
+```sql
+-- kosta 계정에서 testdb의 update 권한 삭제
+REVOKE UPDATE PRIVILEGES ON testdb.* FROM 'kosta';
+
+-- kosta 계정에서 testdb의 모든 권한 삭제
+REVOKE ALL PRIVILEGES ON testdb.* FROM 'kosta';
+
+-- kosta 계정에서 모든 권한 삭제 
+REVOKE ALL PRIVILEGES ON *.* FROM 'kosta';
+```
 > ## TCL (Transaction Control Language)  
- commmit(확정), rollback(취소)
+ commmit(확정), rollback(취소)  
+ Transaction : DB의 상태를 변환시키는 하나의 논리적 기능을 수행하기 위한 작업의 단위(쿼리 명렁어 하나) try/catch 구문 
+```sql
+START TRANSACTION; -- 일괄 처리할 SQL 명령어들을 묶은 블럭
+-- 트랜잭션 처리는 INSERT, UPDATE, DELETE 문을 관리하기 위해 사용, SELECT, CREATE, DROP 작업은 ROLLBACK 못함
+DELETE FROM emp_sub;
 
+ROLLBACK; -- 발생한 변경사항을 취소하는 명령어, 시작되기 이전의 상태로 되돌아간다.
+COMMIT; -- 변경된 작업 내용을 DB에 UPDATE
+```
 > DQL (Data Query Language) : select
 
