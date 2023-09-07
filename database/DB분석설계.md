@@ -13,9 +13,15 @@
 
 ![image](https://github.com/JeHa-An/KOSTA/assets/106300022/b37bf833-7baa-4868-8e16-437bab451c17)
 
+### 예제
+![image](https://github.com/JeHa-An/KOSTA/assets/106300022/9f399e34-8721-4072-b780-53814b158212)
+![image](https://github.com/JeHa-An/KOSTA/assets/106300022/798a28b8-f1ed-4131-b378-f7fb204c3fc7)  
 
 - 릴레이션 = Table, 도메인 = column, 튜플 = row, 속성 = column_name
+
 ![image](https://github.com/JeHa-An/KOSTA/assets/106300022/d9f0b3c5-219d-48f3-aaca-862882d149c6)
+
+
 
 ## 물리적 설계
 > 이 단계의 목적은 개발에 사용할 DB를 선정하여 특정 DB로 구현될 수 있도록 구체적으로 설계하는 과정
