@@ -48,7 +48,7 @@
 **DELETE** 은 데이터를 삭제하지만 메모리까지 삭제하지 않아 시스템 부하가 크지만 복구가 가능하다.
 </details>
 
-> ## DDL (Data Manipulation Language)  
+> ## DML (Data Manipulation Language)  
  insert(입력), update(수정), delete(삭제), merge(병합)  
 <details>
 <summary>constraint</summary>
