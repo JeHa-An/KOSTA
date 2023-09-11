@@ -100,7 +100,7 @@ close(conn);
   > 외부설정파일을 읽어오거나 & 파일형태로 출력하고자 할 때 쓴다.
 ```properties
 // driver.properties
-driver=mariadb.jdbc.MariaDriver
+driver=org.mariadb.jdbc.Driver
 url=jdbc:mariadb://localhost:3306/testdb
 user=root
 password=1234
