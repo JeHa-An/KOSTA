@@ -38,8 +38,13 @@
 &nbsp;**Table**은 가장 기본적이고 중요한 구성요소이며, 테이블은 하나 이상의 열(column)과 행(row)로 이루어져 있다.&nbsp;**Primary key(기본키)**는 Table에서 특정 행만을 유일하게 구별할 수 있는 키이며, 유일한 값을 가지고 있어야한다.&nbsp;**Foreign Key(외래키)**는 한 Table의 column이 다른 Table의 기본키를 참조하는 경우 사용한다. 이러한 테이블간의 관계에서 외래 키를 이용한 테이블 간 join이 가능하다.<br><br>
 <p align="center"><img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fdthgnu%2Fbtsc1vzNtqf%2FcdntQvkYPIAjkxXij6wF7K%2Fimg.png" width="500" height="500"></p><br>
 
-## HeidisSQL
-DB 배우기 위한 Tool 
+<details>
+<summary> <span style="font-size:200%">HeidiSQL</span></summary>
+
+<!--summary 아래 빈칸 공백 두고 내용을 적는공간-->
+<br>하이디SQL은 여러 종류의 DBMS를 하나의 Tool로 관리하고 편집할 수 있으며, DBMS가 아닌 DB 관리 도구이다. (MariaDB, MySQL, Microsoft SQL, PostgreSQL, SQLite 등의 데이터베이스 시스템을 실행하는 컴퓨터에 접속해 데이터 구조를 보고 편집할 수 있다.
+
+</details> 
 
 ## [SQL](https://github.com/JeHa-An/KOSTA/blob/main/database/SQL.md)
 - DBMS 제작 회사와 독립적
