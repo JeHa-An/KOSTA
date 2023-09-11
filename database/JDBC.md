@@ -119,5 +119,13 @@ public static Connection getConnection(){
   }
   return conn;
 }
+
+public static void close(Connection conn) {
+		try {
+			if(conn!=null) conn.close();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
 ```
 </details>
