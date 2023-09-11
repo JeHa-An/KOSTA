@@ -98,7 +98,8 @@ close(conn);
 - Properties
   > Map 계열 중 하나의 자료구조이며, Key, value값을 세트로 저장한다.
   > 외부설정파일을 읽어오거나 & 파일형태로 출력하고자 할 때 쓴다.
-```properties 
+```properties
+// driver.properties
 driver=mariadb.jdbc.MariaDriver
 url=jdbc:mariadb://localhost:3306/testdb
 user=root
