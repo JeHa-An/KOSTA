@@ -311,7 +311,7 @@ WHERE deptno1=101;
 ```
 <br> 
 
-## join
+## join 
 ```sql
 -- ANSI join (표준)
 SELECT A.컬럼 B.컬럼
@@ -367,3 +367,27 @@ LEFT JOIN department d2 ON s.deptno2 = d2.deptno;
 
 ```
 ## subquery
+```sql
+SELECT colume_list
+FROM table
+WHERE 조건연산자 (SELECT column_list FROM table WHERE 조건); -- <  Sub Query
+```
+
+- =, <>(!=), >, >=, <, <= : 단일행 서브쿼리 연산자
+```sql
+
+```
+- 다중 서브쿼리 연산자
+> in, exists(존재), >any(가장 작은 것보다 큰 것any중 하나라도 크면), <any(가장 큰 것보다 작은거 any중 하나라도 작으면) <all(가장 작은 것 보다 작은거), >all(가장 큰것 보다 큰 것)
+```sql
+
+```
+
+- limit
+```sql
+SELECT *
+FROM emp
+ORDER BY sal DESC
+LIMIT 0, 5; -- 예외적으로 첫번째(0) 부터 5개
+```
+
