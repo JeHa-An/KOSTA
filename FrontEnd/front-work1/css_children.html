@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 바로 밑의 자식 */
+        #header > h1 {
+            color: red;
+        }
+        /* 후손 */
+        /* #header h1 {
+            color: beige;
+        } */
+        #section > h1 {
+            color: orange;
+        }
+        table>tbody > tr > th{
+            color: red;
+        }
+    </style>
+<body>
+    <div id="header">
+        <h1 class="title">lorem ist</h1>
+        <div id="nav">
+            <h1>Navigation</h1>
+        </div>
+    </div>
+    <div id="section">
+        <h1 class="title">Lorem ipstu</h1>
+        <p>lorem upsum sit mamet, consertseat,adipsiscing elit.</p>
+    </div>
+    <!-- tbody가 자동 생성 웹 브라우저 검색 확인 -->
+    <table border="1">
+        <tr>
+            <th>이름</th>
+            <th>지역</th>
+        </tr>
+        <tr>
+            <td>홍길동</td>
+            <td>서울시 금첨구 호서대벤처타워</td>
+        </tr>
+    </table>
+</body>
+</html>

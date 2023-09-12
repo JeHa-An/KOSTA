@@ -109,6 +109,12 @@ public class Shop {
 			}
 		} catch(Exception e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				if(pstmt!=null) pstmt.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
 		}
 		close(conn);
 		return good;
@@ -116,10 +122,14 @@ public class Shop {
 	
 	public void updateProduct(Connection conn, Order order) {
 		PreparedStatement pstmt = null;
-		String sql = "update goods set stock=stock-? where code=?";
+		String sql = "update goods set stock=stock+? where code=?";
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, order.getAmount());
+			if(order.isCanceled() == true) {
+				pstmt.setInt(1, order.getAmount()*-1);
+			}else {
+				pstmt.setInt(1, order.getAmount());
+			}
 			pstmt.setString(2, order.getProductCode());
 			pstmt.executeUpdate();
 		} catch(Exception e) {
@@ -133,29 +143,6 @@ public class Shop {
 		}
 	}
 	
-//	public void deleteProduct(Connection conn, Order order) {
-//		PreparedStatement pstmt = null;
-//		String sql = "update goods set stock=stock+? where code=?";
-//		ResultSet rs = null;
-//		Order delOrder = null;
-//		try {
-//			pstmt = conn.prepareStatement(sql);
-//			pstmt.setInt(1, order.getAmount());
-//			pstmt.setString(2, order.getProductCode());
-//			rs = pstmt.executeQuery();
-//			if(rs!=null && rs.next()) {
-//				Integer no = rs.getInt(1);
-//				String customer = rs.getString(2);
-//				String productcode = rs.getString(3);
-//				Integer amount = rs.getInt(4);
-//				Boolean iscanceled = rs.getBoolean(5);
-//				delOrder = new Order;
-//			}
-//		} catch(Exception e) {
-//			e.printStackTrace();
-//		}
-//		return delOrder;
-//	}
 	
 	public void printAllProductInfo() {
 		List<Goods> goodList = new ArrayList<>();
@@ -208,7 +195,7 @@ public class Shop {
 				while(rs.next()) {
 					Integer no = rs.getInt(1);
 					String customer = rs.getString(2);
-					String productcode = rs.getString(2);
+					String productcode = rs.getString(3);
 					Integer amount  = rs.getInt(4);
 					boolean iscanceled = rs.getBoolean(5);
 					orderList.add(new Order(no, customer, productcode, amount, iscanceled));
@@ -255,30 +242,28 @@ public class Shop {
 		return order;
 	}
 	
-	public Order cancelOrder(int row) {
+	public Order cancelOrder(Integer rNo) {
 		Connection conn = getConnection();
 		String sql = "update `order` set iscanceled=? where no=?"; // 가변하는 데이터 ?
 		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		Order order = null;
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setBoolean(1, false); // ?의 순서
-			pstmt.setInt(2, row); // ?의 순서
-			rs = pstmt.executeQuery();
-			if(rs!=null && rs.next()) {
-				Integer no = rs.getInt(1);
-				String customer = rs.getString(2);
-				String productcode = rs.getString(3);
-				Integer amount = rs.getInt(4);
-				Boolean iscanceled = rs.getBoolean(5);
-				deleteProduct(conn, new Order(no, customer, productcode, amount, iscanceled));
-			}
+			pstmt.setInt(2, rNo); // ?의 순서
+			pstmt.executeQuery();
 		} catch(Exception e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				if(pstmt!=null) pstmt.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
 		}
+		Order order = findOrderByNo(rNo);
+		updateProduct(conn, order);
 		close(conn);
-		return temp;
+		return order;
 	}
 	
 	

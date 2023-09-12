@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        li.select {
+            color: red;
+        }
+        .item {
+            color: aqua;
+        }
+        .header {
+            background-color: blue;
+        }
+        input[type="text"]{
+            background-color: chocolate;
+        }
+        input[type="password"]{
+            background-color: yellowgreen;
+        }
+        input[type="radio"]:checked+label {
+            color: red;
+        }
+        
+    </style>
+</head>
+<body>
+    <ul>
+        <li class="select">사과</li>
+        <li>바나나</li>
+        <li class="select">오렌지</li>
+        <li>감</li>
+    </ul>
+    <h1 class="select header item">동해물과 백두산이</h1>
+    <form action="">
+        <input type="text">
+        <input type="password">
+        <input type="radio" name="radio"><label for="">남</label>
+        <input type="radio" name="radio"><label for="">여</label>
+
+        <input type="checkbox">
+        <input type="checkbox">
+        <input type="checkbox">
+    </form>
+</body>
+</html>
