@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div.container {
+            /* flex, inline-flex */
+            display: flex; 
+            /* row, column, row-revers, colume-revers */
+            flex-direction: row;
+            flex-wrap: nowrap;
+            /* flex-(start, end), center, space-(between, around, evenly)*/
+            justify-content: flex-start;
+            border: 1px solid black;
+        }
+        div.item{
+            margin: 3px;
+            padding: 10px;
+            border: 1px solid black;
+        }
+        div.container2 {
+            display: flex; 
+            flex-direction: row;
+            /* stretch, center, flex-start, flex-end, baseline */
+            align-items: center;
+            border: 1px solid black;
+        }
+        div > .item2{
+            border: 1px solid black;
+            width: 100px;
+        }
+
+        div.container3 {
+            display: flex;
+            flex-direction: row;
+            border: 1px solid black;
+        }
+        div.item3 {
+            /* flex-grow: 1; */
+            border: 1px solid black;
+        }
+        div.item3:nth-child(1) {
+            /* 크기 고정 */
+            flex-shrink: 0;
+            width: 100px;
+            /* flex-grow: 1; */
+        }
+        div.item3:nth-child(2) {
+            flex-grow: 1;
+        }
+        div.item3:nth-child(3) {
+            flex-grow: 1;
+        }
+
+        div.container4 {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 10px;
+            border: 1px solid black;
+        }
+        
+        .item4 {
+            flex : 1 1 40%;
+            margin: 2px;
+            border: 1px solid black;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="item">Hello Flex1</div>
+        <div class="item">Flex2</div>
+        <div class="item">Hello Flex3</div>
+    </div>
+    <!-- inline은 width가 적용되지 않지만 container2가 flex라 적용 가능 -->
+    <div class="container2">
+        <label class="item2">label</label>
+        <h3 class="item2">hong gil dong</h3>
+        <p class="item2">seoul gumcheon</p>
+        <h1 class="item2">title</h1>
+    </div>
+
+    <div class="container3">
+        <div class="item3">ITEM</div>
+        <div class="item3">ITEM</div>
+        <div class="item3">ITEM</div>
+    </div><br>
+    <div class="container4">
+        <div class="item4">ITEM</div>
+        <div class="item4">ITEM</div>
+        <div class="item4">ITEM</div>
+        <div class="item4">ITEM</div>
+        <div class="item4">ITEM</div>
+        <div class="item4">ITEM</div>
+        <div class="item4">ITEM</div>
+        <div class="item4">ITEM</div>
+        <div class="item4">ITEM</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: #c9c9c9;
+            margin: 3px;
+        }
+        #header {
+            background-color: orange;
+            color: white;
+            text-align: center;
+        }
+        #header h1 {
+            font-size: 85px;
+            margin: 0 0 3px 0;
+        }
+        #header p {
+            font-weight: bold;
+            margin: 0;
+            padding-bottom: 10px;
+            
+        }
+        #nav {
+            background-color: #d3d3d3;
+            font-size: 13px;
+            text-align: center;
+        }
+
+        #main {
+            display: flex;
+        }
+
+        #artist {
+            background-color: white;
+            width: 200px;
+            margin-top: 0;
+            font-size: 14px;
+            flex-grow: 1;
+        }
+        .artist_title {
+            background-color: brown;
+        }
+        .artist_title > h3 {
+            color: white;
+            margin-top: 0;
+            padding: 10px 0px 10px 5px;
+        }
+        .artist_link {
+            display: flex;
+            flex-direction: column;
+        }
+        .artist_link {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        #info {
+            flex-grow: 2;
+            margin: 0 auto;
+        }
+        .info_text {
+            width: 480px;
+            margin: 10px;
+        }
+        .info_text h3{
+            background-color: navy;
+            color: whitesmoke;
+            text-align: left;
+            margin-top: 15px;
+            padding: 5px;
+        }
+        .info_text span {
+            font-size: 20px;
+        }
+        .info_text p {
+            font-size: 14px;
+        }
+        #ad {
+            width: 150px;
+            background-color: white;
+            font-size: 14px;
+            padding: 10px;
+            flex-grow: 1;
+        }
+        .ad_title{
+            font-size: 20px;
+        }
+        .ad_title_text1 {
+            color: gray;
+            text-decoration-line: underline;
+            text-decoration-thickness: 1px;
+        }
+        .ad_title_text2 {
+            color: orange;
+            text-decoration-line: underline;
+            text-decoration-thickness: 1px;
+        }
+
+        #footer {
+            background-color: navy;
+            color: white;
+            text-align: center;
+        }
+        #footer p {
+            margin: 0;
+            padding: 5px;
+        }
+        #footer a {
+            color: white;
+        }
+
+        .bold {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div id="header">
+        <h1>Musee d'Orsay</h1>
+        <p>Musee d'Orsay Musee d'Orsay Musee d'Orsay Musee d'Orsay Musee d'Orsay</p>
+    </div>
+    <div id="nav">
+        <span>Royal Academy of Arts, THE REAL VANGOGH THE ARTIST AND HIS LEFTTERS</span>
+    </div>
+    <div id="main">
+        <div id="artist">
+            <div class="artist_title">
+                <h3>ARTIST</h3>
+            </div>
+            <div class="artist_link">
+                <a href="#">작가의 작품</a><br>
+                <a href="#">작가의 시대</a><br>
+                <a href="#">작가의 일생</a><br>
+            </div>
+        </div>
+        <div id="info">
+            <div class="info_text">
+                <h3>피리부는 소년</h3>
+                <span>에두아르마네</span>
+                <p>1866 캔버스에 유채, 161*97cm, 파리 오르세 Edourade Manet, LeFifre, H.T, 161*97</p>
+            </div>
+            <div class="info_text">
+                <h3>고흐의 방</h3>
+                <span>빈센트반고흐</span>
+                <p>1866 캔버스에 유채, 57.5*74cm, 파리 오르세 Vincent VanGOGH, La Chambre de Van Gogh, H/T, 57.5*74</p>
+            </div>
+            <div class="info_text">
+                <h3>황색 그리스도가 있는 화가의 자화상</h3>
+                <span>폴 고갱</span>
+                <p>1890-1891 캔버스에 유채, 38*46cm, 파리 오르세 Paul Gauguin Portrait de i'artiste au Paul Gauguin, H/T, 38*46cm</p>
+            </div>
+            <div class="info_text">
+                <h3>오페라좌의 관현악단</h3>
+                <span>에드가 드가</span>
+                <p>1868-1869 캔버스에 유채, 32*46cm, 파리 오르세 Edgar Degas, L'orchestre de I'Opera, H/T, 32*46cm</p>
+            </div>
+            <div class="info_text">
+                <h3>만종</h3>
+                <span>장 프랑수아 밀레</span>
+                <p>1857-1859 캔버스에 유채, 55.5*46cm, 파리 오르세 Jean-Franqois Milet, L'Angelus H/T, 55.5*46cm</p>
+            </div>
+            <div class="info_text">
+                <h3>제비꽃장식을 단 베르트모리조</h3>
+                <span>에두아르마네</span>
+                <p>1872 Eduouard Manet Berthe Morisot au bouquet de H/T 55*38cm</p>
+            </div>
+        </div>
+        <div id="ad">
+            <div class="ad_title">
+                <span class="ad_title_text1">전세계인들에게</span> <span class="ad_title_text2">제일 사랑받는</span> 서양미술사의 시대
+            </div><br>
+            <div class="ad_link">
+                <div class="">
+                    <a href="#" class="bold">Workshop GO</a><br>
+                    <span>Life drowing workshop</span>
+                </div><br>
+                <div class="">
+                    <a href="#" class="bold">Summer exhibition</a><br>
+                    <span>A-level Summer Exibition Online 2010</span>
+                </div><br>
+                <div class="">
+                    <a href="#" class="bold">RA collection</a><br>
+                    <span>RA Collections</span>
+                </div><br>
+            </div>
+        </div>
+    </div>
+    <div id="footer" class="bold">
+        <p>c 2012 Les Amis du Musee d'Orsay. ALL rights reserved. <a href="#">amis@amis-musee-orsay.org</a> Legal status</p>
+    </div>
+</body>
+</html>
