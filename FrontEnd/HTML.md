@@ -119,8 +119,155 @@ CO<sub>2</sub><br>
     </p>
 ```
 
-### semantic
-검색 엔진은 시맨틱 태그 
+#### img
 ```html
+<img src="img_name" alt="이미지 못 불러올 때 대신 표시">
+```
+#### audio
+```html
+<aduio src="audio_name" controls="controls"></aduio>
+```
 
+#### video
+```html
+<video controls=controls" width="500px">
+    <source src="video_name.mp4" type="video/mp4"
+<video>
+```
+
+#### select
+```html
+<form action="test.html">
+        <select name="food" id="">
+            <option value="kimbab">김밥</option>
+            <option value="dduck">떡볶이</option>
+            <option value="soon">순대</option>
+            <option value="fishcake">어묵</option>
+        </select>
+        <input type="submit">
+    </form><br>
+    <form action="food2">
+
+        <select name="" id="" multiple>
+            <option value="jjajang">짜장면</option>
+            <option value="jjabppong">짬뽕</option>
+            <option value="tangsuyuck">탕수육</option>
+            <option value="gganponggi">깐풍기</option>
+        </select>
+        <input type="submit">
+    </form><br>
+
+    <select name="" id="">
+        <optgroup label="HTML5">
+            <option value="">Multimeda Tag</option>
+            <option value="">Connectivity</option>
+            <option value="">Device Access</option>
+        </optgroup>
+        <optgroup label="CSS3">
+            <option value="">Animation</option>
+            <option value="">3D Trasfrom</option>
+        </optgroup>
+    </select>
+```
+#### textarea
+```html
+<textarea name="" id="" cols="30" rows="10"></textarea>
+```
+
+### table
+```html
+<table border="1">
+        <tr>
+            <th colspan="2">지역별 홍차</th>
+        </tr>
+        <tr>
+            <th rowspan="3">중국</th>
+            <td>정산소종</td>
+        </tr>
+        <tr>
+            <td>기문</td>
+        </tr>
+        <tr>
+            <td>윤남</td>
+        </tr>
+        <tr>
+            <th rowspan="4">인도 및 스리랑카</th>
+            <td>아삼</td>
+        </tr>
+        <tr>
+            <td>실론</td>
+        </tr>
+        <tr>
+            <td>디질링</td>
+        </tr>
+        <tr>
+            <td>닐기리</td>
+        </tr>
+    </table>
+```
+
+#### p, span
+```html
+<span>span Tag</span>
+<p>p Tag</p>
+```
+
+#### div
+```html
+    <div>div tag</div>
+    <div>div tag</div>
+    <div>div tag</div>
+```
+
+#### radio 
+```html
+<form action="">
+        <table>
+            <tr>
+                <td><label for="username">이름</label></td>
+                <td><input type="text" id="username" name="username"></td>
+            </tr>
+            <tr>
+                <td>성별</td>
+                <td>
+                    <input type="radio" id="man" value="m" name="gender">
+                    <label for="man">남자</label>
+                    <input type="radio" id="woman" value="w" name="gender">
+                    <label for="woman">여자</label>
+                </td>
+            </tr>
+        </table>
+        <input type="submit" value="가입">
+    </form>
+```
+### semantic
+검색 엔진은 시맨틱 태그의 내용을 확인
+```html
+ <!-- 검색 엔진은 시멘틱 태그 내용을 확인 -->
+    <header>
+        <h1>HTML5</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#">메뉴 -1</a></li>
+            <li><a href="#">메뉴 -2</a></li>
+            <li><a href="#">메뉴 -3</a></li>
+        </ul>
+    </nav>
+    <section>
+        <article>
+            <h1>lorem1</h1>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Neque quae sit cupiditate? Eaque facere fugiat distinctio, obcaecati saepe eveniet ipsa repudiandae enim aut, modi minima suscipit nostrum excepturi cum nesciunt.</p>
+        </article>
+        <article>
+            <h1>lorem2</h1>
+            <p style="color: red;" title="Lorem">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Neque quae sit cupiditate? Eaque facere fugiat distinctio, obcaecati saepe eveniet ipsa repudiandae enim aut, modi minima suscipit nostrum excepturi cum nesciunt.</p>
+        </article>
+        <article>
+            <h1>lorem2</h1>
+            <!-- 들여쓰기 -->
+            <blockquote>Lorem ipsum dolor, <q>sit amet consectetur adipisicing elit</q>. Neque quae sit cupiditate? Eaque facere fugiat distinctio, obcaecati saepe eveniet ipsa repudiandae enim aut, modi minima suscipit nostrum excepturi cum nesciunt.</blockquote>
+        </article>
+    </section>
+    <footer><address>서울특별시 금천구 호서대벤처타워</address></footer>
 ```
