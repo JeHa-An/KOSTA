@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // dom
+        window.onload = function() { // dom이 모두 생성된 후에 호출
+            document.querySelector('h1').style.backgroundColor='red';
+            document.querySelector('h2').style.color='blue';
+            let his = document.querySelectorAll('h1'); // 배열 타입으로 반환
+            for(let h1 of his){
+                h1.style.backgroundColor='green';
+            }
+            
+        }
+    </script>
+</head>
+<body>
+    <h1>hello javascript</h1>
+    <h1>hello javascript</h1>
+    <h2>hello jquery</h2>
+    
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload = (e) => {
+            form.onsubmit = () => {
+                if(id.value.trim().length<4) {
+                    alert('ID ERROR')
+                    // return false;
+                    e.preventDefault();
+                }
+                if(password.value.trim().length<4) {
+                    alert('PASSWORD ERROR');
+                    e.preventDefault();
+                    // return false;
+                }
+                // return false; // 타당성 check
+            }
+        }
+    </script>
+</head>
+<body>
+    <form id="form" action="test.html">
+        <input type="text" name="id" id="id"><br>
+        <input type="password" name="password" id="password"><br>
+        <input type="checkbox" name="habby" value="book">독서
+        <input type="checkbox" name="habby" value="movie">영화감상
+        <input type="checkbox" name="habby" value="music">음악감상<br>
+        <input type="radio" name="gender" value="male" checked>남
+        <input type="radio" name="gender" value="female">여<br>
+        <input type="submit">
+    </form>
+</body>
+</html>

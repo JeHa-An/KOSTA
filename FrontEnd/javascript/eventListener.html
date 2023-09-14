@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function handle1() {
+            alert('thanks');
+        }
+        function handle2() {
+            alert('one more thanks')
+        }
+        window.onload = function() {
+            elem.onclick = () => alert("hello?"); // 요즘
+            elem.addEventListener('click', handle1); // 예전
+            elem.addEventListener('click',handle2);
+
+            // 둘이 같이 사용
+            elem.addEventListener('click', () => alert("hi?")); 
+        }
+    </script>
+</head>
+<body>
+    <!-- id 가 뒤에 있으면 web에 안 보임 -->
+    <input id="elem" type="button" value="click">
+</body>
+</html>

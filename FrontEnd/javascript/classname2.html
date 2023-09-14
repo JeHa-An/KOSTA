@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload = function() {
+            // 1. article의 내용 ul에 출력
+            let articles = document.getElementsByClassName('article');
+            let ul = document.getElementsByTagName('ul')[0];
+            for(let article of articles){
+                let li = document.createElement("li");
+                // li.innerHTML = article.innerHTML; 
+                // ul.appendChild(li);
+                li.append(article.textContent);
+                ul.append(li);
+                // let lis = ''; lis += `<li>${...}</li>`
+            }
+            // 2. long 글 p 태그에 출력
+            let longArticle = document.getElementsByClassName('long')[0];
+            let p = document.getElementsByTagName('p')[0];
+            p.append(longArticle.textContent);
+        }
+    </script>
+</head>
+<body>
+    <form action="">
+        <div class="article">글</div>
+        <div class="long article">내용이 긴 글</div>
+    </form>
+    <ul>
+
+    </ul>
+    <p></p>
+</body>
+</html>
