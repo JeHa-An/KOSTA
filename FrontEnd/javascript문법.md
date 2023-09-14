@@ -51,7 +51,7 @@ for(var i of arr) {
 }
 ```
 ## Date
-&ngsp;Date 객체 시간의 한 점을 플랫폼에 종속되지 않는 형태
+&nbsp;Date 객체 시간의 한 점을 플랫폼에 종속되지 않는 형태
 
 ### 생성자
 - Date() : new Date().toString()과 동일하게 현재 날짜와 시간을 문자열로 반환
