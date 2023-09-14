@@ -33,7 +33,18 @@ for(let h of hs) {
 #### getElementByName()
 
 ### event
-&nbsp;웹 에서 일어나는 사건(action) 혹은 발생(occurrence)
+&nbsp;웹 에서 일어나는 사건(action) 혹은 발생(occurrence)을 어떤한 방식으로 응답할 수 있도록 웹에 말해주는 것<br>
+#### 이벤트 타입 예
+- 사용자가 키보드에서 키를 선택한다.
+- 유저가 브라우저의 창의 크기를 재조정하거나 닫습니다.
+- 양식(form)이 제출되었습니다.
+- 오류가 발생했습니다.
+
+#### 이벤트 핸들러(event handler)
+&nbsp;각 이벤트들은 이벤트 핸들러를 가지고 있으며, 이벤트가 발생되면 실행되는 코드 블럭(우리가 정의한 javascript 함수)이 이벤트에 응답해서 실행되기 위해 정의되었을 때, 우리는 이벤트 핸들러를 등록(register)했다고 하며, 이벤트 리스너(event Listener)라고도 불린다. 즉, **listener는 발생되는 event를 듣고, hanlder는 발생되는 event에 응답해 실행되는 코드입니다.** <br>
+> web event는 브라우저의 내장된 API의 일부
+ 
+
 </div>
 </details>
 
@@ -79,8 +90,9 @@ for(let h of hs) {
 ### nameNodeMap (아직 배우지 않음)
 
 ## HTMLElement
+
 ### innerHTML vs textContent
-&nbsp;innerHTML은 <h1>태그가 적용된 Bye!!가 웹에 보여지고, textContent는 <h1>태그까지 웹에 보여진다.
+&nbsp;innerHTML은 h1 태그가 적용된 Bye!!가 웹에 보여지고, textContent는 h1태그까지 웹에 보여진다.
 ```javascript
 let div1 = document.getElementById('div1');
 div1.innerHTML = `<h1>Bye!!</h1>`; 
