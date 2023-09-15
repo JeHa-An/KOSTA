@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script>
+        $(() => {
+            $('#btn').click(function() {
+                // server에서 카테고리 목록 가져오기
+                // let list = ['원피스', '상의', '하의', '속옷','외투'];
+                let list = [{code:'dress', name:'원피스'},
+                            {code:'top', name:'상의'},
+                            {code:'bottom', name:'하의'},
+                            {code:'inner', name:'속옷'},
+                            {code:'outer', name:'외투'}];
+                for(let item of list) {
+                    let option = $(`<option value="${item.code}">${item.name}</option>`);
+                    option.addClass('category1');
+                    $('#category').append(option);
+
+                }
+            })
+        })
+    </script>
+</head>
+<body>
+    <button id="btn">카테고리 가져오기</button>
+    <select name="" id="category">
+        <option value="">선택</option>
+    </select>
+</body>
+</html>

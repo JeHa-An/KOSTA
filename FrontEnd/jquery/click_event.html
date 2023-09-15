@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script>
+        $(() => {
+            // $('h1').click(() => {
+            //     alert('click');
+            // })
+
+            $('h1').hover(() => {
+                $('h1').css({
+                    background: 'red',
+                    color: 'white'
+                })
+            }, function(){
+                $(this).css({
+                    background:'green',
+                    color:''
+                })
+            })
+        })
+
+        // window.onload = function() {
+        //     document.querySelector('h1').onclick = (e) => {
+
+        //     }
+        // }
+    </script>
+</head>
+<body>
+    <h1>click</h1>
+</body>
+</html>

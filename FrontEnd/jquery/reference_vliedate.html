@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script>
+        $( () => {
+            $('form').submit(function(event) {
+                let value = $('input').val();
+                if(value.replace(/[a-z|A-Z|0-9]/g,'').length==0) {
+                    alert('keep going')
+                } else {
+                    alert('한글 이름을 입력하세요');
+                    event.preventDefault();
+                }
+            })
+        })
+    </script>
+</head>
+<body>
+    <form action="/login">
+        <label for="">이름</label>
+        <input type="text" name="" id="">
+        <input type="submit">
+    </form>
+</body>
+</html>

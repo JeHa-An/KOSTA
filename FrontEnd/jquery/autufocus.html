@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script>
+        $(function() {
+            // keydown, keyup
+            $('#jumin1').keyup(function() {
+                if($(this).val().length >= 6) {
+                    $('#jumin2').focus();
+                }
+            })
+            $('#jumin2').keyup(function(e) {
+                if(e.keyCode==8 && $(this).val().length==0){
+                    $('#jumin1').focus();
+                }
+            })
+            $('input').keydown(function(e) {
+                console.log(e.keyCode);
+                if(!((e.keyCode >= 48 && e.keyCode <= 57) || e.keyCode==8)) return false;
+            })
+            $('#name').keydown(function(e) {
+                if(!(e.keyCode == 229 || e.keyCode==8)) return false;
+            })
+        })
+        </script>
+</head>
+<body>
+    <input id="jumin1" type="text" maxlength="6">
+    <span>-</span>
+    <input id="jumin2" type="text" maxlength="7"><br>
+    <input type="text" id="name">
+</body>
+</html>

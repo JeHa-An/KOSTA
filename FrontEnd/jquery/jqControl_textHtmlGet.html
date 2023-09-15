@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script>
+        $(() => {
+            // text: 태그를 제외하고 가져오며, 여러 개의 값을 합쳐서 가져온다.
+            // html: 태그까지 가져오며, 첫번 째의 값만 가져온다.
+            let text = $('div').text();
+            let html = $('div').html();
+            console.log(text);
+            console.log(html);
+            $('body').append(`<p>text: ${text}</p>`);
+            $('body').append(`<p>html: ${html}</p>`);
+        })
+    </script>
+</head>
+<body>
+    <div><h1>header - 0</h1></div>
+    <div><h1>header - 1</h1></div>
+</body>
+</html>
