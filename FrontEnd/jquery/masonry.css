@@ -1,0 +1,85 @@
+.dropdown {
+  position: relative;
+  display: inline-block;
+  padding: 10px 20px;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  z-index: 1;
+  /*다른 요소들보다 앞에 배치*/
+}
+
+.dropdown-content span {
+  display: block;
+}
+
+.dropdown:hover {
+  background-color: lightgray;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+  background-color: white;
+  font-weight: bold;
+  /* margin-top: 12px; */
+  margin-top: 12px;
+}
+
+.dropdown-content span {
+  text-align: center;
+  margin: 5px;
+}
+
+#header {
+  display: flex;
+  border-bottom: 1px solid #c9c9c9;
+}
+
+.left {
+  margin: 10px 0 10px 10px;
+}
+
+.left input:nth-child(1) {
+  position: relative;
+  border: 1px solid skyblue;
+  border-radius: 25px;
+}
+
+.left input:nth-child(2) {
+  top: 12px;
+  left: 120px;
+  position: absolute;
+  border: 1px solid lightgray;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+.center {
+  color: red;
+
+}
+
+.right {
+  margin: 0;
+  font-weight: bold;
+  display: flex;
+
+}
+
+.nav {
+  border-bottom: 1px solid lightgray;
+  box-shadow: 3px 3px lightgray
+}
+
+.nav tr {
+  display: flex;
+  align-items: center;
+}
+
+.nav td {
+  color: blueviolet;
+  margin: 0 10px;
+  font-size: 10px;
+}
