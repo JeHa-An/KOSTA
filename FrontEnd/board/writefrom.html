@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #header {
+            display: flex;
+            justify-content: center;
+        }
+
+        #input {
+            display: flex;
+            justify-content: center;
+        }
+        .item1 {
+            background-color: orange;
+            border: 1px solid white;
+        }
+        .item2 {
+            background-color: skyblue;
+            border: 1px solid white;
+        }
+        .lastBtn {
+            display: flex;
+            justify-content: space-evenly;
+            margin: 0 150px;
+        }
+        .label {
+            width: 150px;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script>
+        $(function() {
+            $('input[name="등록"]').on("click", function(e) {
+                let = $()
+            })
+        })
+    </script>
+</head>
+<body>
+    <div id="header">
+        <h1>게시판글등록</h1>
+    </div>
+    <div id="input">
+        <form action="boardlist.html">
+            <table>
+                <tr>
+                    <td class="item1 label"><label for="writer">글쓴이</label></td>
+                    <td class="item2"><input type="text" name="writer" size="30"></td>
+                </tr>
+                <tr>
+                    <td class="item1 label"><label for="title">제목</label></td>
+                    <td class="item2"><input type="text" name="title" size="30"></td>
+                </tr>
+                <tr>
+                    <td class="item1 label"><label for="content">내용</label></td>
+                    <td><textarea name="content" id="" cols="50" rows="20"></textarea></td>
+                </tr>
+                <tr class="item1">
+                    <td><label class="label" for="file">이미지</label></td>
+                    <td class="item2"><input type="image"></td>
+                </tr>
+            </table>
+            <div class="lastBtn">
+                <input type="submit" value="등록" name="등록">
+                <input type="reset" value="다시쓰기">
+            </div>
+        </form>
+    </div>
+</body>
+</html>

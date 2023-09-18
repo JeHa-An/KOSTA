@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        tbody{
+            text-align: center;
+        }
+        table {
+            border: 2px solid black;
+            margin: 0 auto;
+        }
+        .header {
+            text-align: center;
+        }
+        .submit {
+            border: 2px solid black;
+            background-color: #c9c9c9;
+            padding: 0 45px;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script>
+        $(function() {
+            $('input[name="grade"]').on("change", function() {
+                let a = $('input[name="grade"]:checked');
+                let sel = $('.sel');
+                if(a.val() == "1") {
+                    sel.attr('disabled','true');
+                } else {
+                     sel.removeAttr('disabled');
+                }
+            })
+        })
+    </script>
+    </head>
+    
+    <body>
+        <form action="">
+            <div class="header">
+                <h2>계좌계설</h2>
+            </div>
+            <table>
+                <tr>
+                    <td><label for="">계좌계설</label></td>
+                    <td><input type="text" name=""></td>
+                </tr>
+                <tr>
+                    <td><label for="">이름</label></td>
+                    <td><input type="text" name=""></td>
+                </tr>
+                <tr>
+                    <td><label for="">입금액</label></td>
+                    <td><input type="text" name=""></td>
+                </tr>
+                <tr>
+                    <td><label for="">종류</label></td>
+                    <td>
+                        <input type="radio" name="grade" value="1">일반
+                        <input type="radio" name="grade" value="2">특수
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="">등급</label></td>
+                    <td>
+                        <select class="sel">
+                            <option value="">VIP</option>
+                            <option value="">GOLD</option>
+                            <option value="">SILVER</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input class="submit" type="submit" value="개설">    
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </body>
+    
+    </html>

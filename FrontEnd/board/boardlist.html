@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #header{
+            display: flex;
+            justify-content: center;
+            font-weight: bold;
+        }
+        #header > h2 {
+            margin: 30px 10px;
+        }
+        
+        #search {
+            display: flex;
+            justify-content: center;
+        }
+        
+        #items {
+            margin-top: 5px;
+            font-weight: bold;
+            display: flex;
+            justify-content: center;
+        }
+        .item {
+            background-color: orange;
+            border: 1px solid white;
+            margin: 20px 0.5px;
+            padding: 0 50px;
+            
+        }
+        .list {
+            text-align: center;
+        }
+        
+    </style>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script>
+        let articleList = [{no:1, title:'제목1', writer:'hong', date:'2023-09-18', count:0},
+        {no:2, title:'제목1', writer:'zong', date:'2023-09-15', count:0},
+        {no:3, title:'제목2', writer:'song', date:'2023-09-16', count:0},
+        {no:4, title:'제목3', writer:'gong', date:'2023-09-17', count:0},
+        {no:5, title:'제목4', writer:'pong', date:'2023-09-18', count:0},
+        {no:6, title:'제목5', writer:'cong', date:'2023-09-19', count:0}]
+        window.onload = () => {
+            let items = document.querySelectorAll('#items')
+            for(let i = 0; i < articleList.length; i++){
+
+            }
+        }
+        $(function() {
+            for(let article of articleList){
+                // $('#items').append(`<tr><td>${article.no}</td>
+                // <td><a href="detailform.html?no=${article.no}">
+                //  ${article.title}</a></td>
+                // <td>${article.writer}</td>
+                // <td>${article.date}</td>
+                // <td>${article.count}</td></tr>`).addClass('list');
+                let tr = $(`<tr></tr>`);
+                let td_no = $(`<td>${article.no}</td>`);
+                let td_title = $(`<td>${article.title}</td>`)
+                let td_writer = $(`<td><a href="detailform.html?no=${article.no}">${article.title}</a></td>`);
+                let td_date = $(`<td>${article.date}</td>`);
+                let td_count = $(`<td>${article.count}</td>`);
+                let td_del = $(`<button>삭제</button>`);
+
+                tr.append(td_no);
+                tr.append(td_title);
+                tr.append(td_writer);
+                tr.append(td_date);
+                tr.append(td_count);
+                tr.append(td_del);
+                $('table>tbody').append(tr).addClass('list');
+                console.log(tr)
+            }
+        });
+   </script>
+</head>
+<body>
+    <div id="header">
+        <h2>글 목록</h2>
+        <h2>
+            <a href="./writefrom.html">글쓰기</a>
+        </h2>
+    </div>
+    <div id="search">
+        <form action="#">
+            <select>
+                <option value="title">제목</option>
+                <option value="writer">이름</option>
+                <option value="date">날짜</option>
+            </select>
+            <input type="text" name="">
+            <input type="submit" value="검색">
+        </form>
+    </div>
+    <table id="items">
+        <tr>
+            <td class="item">번호</td>
+            <td class="item">제목</td>
+            <td class="item">작성자</td>
+            <td class="item">날짜</td>
+            <td class="item">조회수</td>
+            <td class="item">삭제</td>
+        </tr>
+    </table>
+</body>
+
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div.item:nth-child(1) {background-color: blueviolet;}
+        div.item:nth-child(2) {background-color: pink;}
+        div.item:nth-child(3) {background-color: burlywood;}
+    </style>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script>
+        $(function() {
+            let width = $('[data-role="slider"]').attr('data-width');
+            let height = $('[data-role="slider"]').attr('data-height');
+            let count = $('[data-role="slider"] div.item').length;
+            
+            $('[data-role="slider"]').css({
+                position : 'relative',
+                overflow : 'hidden',
+                width : width,
+                height : height,
+            }).find('.container').css({
+                position : 'absolute',
+                width : count*width,
+                overflow : 'hidden'
+            }).find('.item').css({
+                width : width,
+                height : height,
+                float : 'left'
+            })
+
+            let currentPage = 0;
+            let changePage = function() {
+                $('[data-role="slider"] > .container').animate({
+                    left : -currentPage * width
+                }, 500);
+            }
+
+            $('#left-button').click(function() {
+                if(currentPage > 0) {
+                    currentPage = currentPage - 1;
+                    changePage();
+                }
+            })
+
+            $('#right-button').click(function() {
+                if(currentPage < count-1) {
+                    currentPage = currentPage + 1;
+                    changePage();
+                }
+            })
+        })
+    </script>
+</head>
+<body>
+    <div data-role="slider" data-width="500" data-height="300">
+        <div class="container">
+            <div class="item">
+                <h1>lorem asdfasdf asdfsdf ewrwer 1</h1>
+                <p>sldfjs asdf weadf weoflv szzv dfdm, sdfdsf</p>
+            </div>
+            <div class="item">
+                <h1>lorem asdfasdf asdfsdf ewrwer 2</h1>
+                <p>sldfjs asdf weadf weoflv szzv dfdm, sdfdsf</p>
+            </div>
+            <div class="item">
+                <h1>lorem asdfasdf asdfsdf ewrwer 3</h1>
+                <p>sldfjs asdf weadf weoflv szzv dfdm, sdfdsf</p>
+            </div>
+        </div>
+    </div>
+    <button id="left-button"><</button>
+    <button id="right-button">></button>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://masonry.desandro.com/masonry.pkgd.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="jquery.imagesloaded.min.js"></script>
+    <script src="jquery.masonry.min.js"></script>
+    <style>
+        * {
+            margin: 0 auto;
+        }
+
+        body {
+            background-color: lightgray;
+        }
+        .pf_box {
+            background-color: lightgray;
+            box-shadow: 2px 2px gray;
+        }
+
+        .box {
+            background-color: white;
+            margin: 5px;
+        }
+        #picture {
+            width: 95%;
+            margin: 10px auto;
+        }
+    </style>
+    <script>
+        let pictures = ['picture1.jpg', 'picture2.jpg', 'picture3.jpg', 'picture4.jpg',
+            'picture5.jpg', 'picture6.jpg', 'picture7.jpg', 'picture8.jpg', 'picture9.jpg', 'picture10.jpg',
+            'picture11.jpg', 'picture12.jpg', 'picture13.jpg', 'picture14.jpg', 'picture15.jpg', 'picture16.jpg',
+            'picture17.jpg', 'picture18.jpg', 'picture19.jpg', 'picture20.jpg', 'picture21.jpg', 'picture22.jpg',
+            'picture23.jpg', 'picture24.jpg', 'picture25.jpg'];
+
+        $(function () {
+            for (let i = 0; i < 25; i++) {
+                let div = $('<div></div>').addClass('box');
+                let img = $('<img/>').attr('id', 'picture' + (i + 1));
+                img.css({
+                    padding:10,
+                    margin:5
+                })
+                let  div2 = $('<div></div>').addClass('pf_box');
+                let img2 = $('<img/>').attr('src', './picture/' + pictures[0]).attr('width', 30).attr('height', 30);
+                let text2 = $('<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla dolores doloribus odit suscipit, repudiandae accusamus magni.</p>')
+                div2.append(img2);
+                div2.append(text2);
+                img.attr('src', './picture/' + pictures[i]);
+                img.attr('width', 180);
+                img.attr('height', 'auto');
+                let text = $('<p>lorem ipsum dolor asdf cldo</p>').addClass('box');
+                div.append(img)
+                div.append(text)
+                div.append(div2)
+                $('#picture').append(div);
+            }
+        })
+        $(function () {
+            // 이미지 로드 확인
+            $('#picture').imagesLoaded(function () {
+                // jQuery Masonry 플러그인 적용
+                $('#picture').masonry({
+                    columnWidth: 110,
+                });
+            });
+        })
+    </script>
+
+</head>
+
+<body>
+    <div id="header">
+        <h1>Interest</h1>
+        <div class="container">
+            정보
+            <input type="text">
+        </div>
+    </div>
+    <div id="picture"></div>
+</body>
+
+</html>
