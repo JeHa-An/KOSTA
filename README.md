@@ -1,6 +1,22 @@
 # 🌱KOSTA 교육
+<details>
+<summary>개발 환경</summary>
+<div markdown="1">
+
+
+|Program|Version|
+|--|--|
+|OS|Windows 11|
+|Eclipse|eclipse-jee-2022-12-R|
+|java|jdk11.0.20_window|
+|MariaDB|?|
+|Tomcat|apache-tomcat-9.0.80|
+
+</div>
+</details>
 
 ### [1. JAVA](./JAVA)
+
 <details>
 <summary>자세히 보기</summary>
 <div markdown="1">
