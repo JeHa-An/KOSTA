@@ -15,26 +15,5 @@
 - target
 > action에서 지정한 script 파일을 현재 창이 아닌 다른 위치에 열도록 지정(_blank(새 탭), _self(기본값 현재 프레임에서 보여줌), _parent, _top)
 
-# input
-> 사용자가 정보를 입력하는 부분을 만들어야 할 때 사용
-
-## 속성
-- readonly 
-> 읽기 전용 필드
-
-- placeholder
-> 힌트 표시
-
-- maxLength
-> 텍스트 필드에 최대로 입력할 수 있는 문자의 개수 지정
-
-- required
-> 필수 입력 필드 지정(입력 값이 없으면 안됨)
-
-- type
-> input 태그의 입력 방식 지정
-
-|type 속성|설명|
-|--|--|
-|text|
- 
+- name
+> 해당 폼의 이름을 명시
