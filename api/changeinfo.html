@@ -9,7 +9,7 @@
     <div id="goback">
         <img src="back.jpg" width="40px" height="40px"><span>뒤로가기</span>
     </div>
-    <form action="changeinfo">
+    <form action="changeinfo" method="post">
         <div id="changeinfospace">
             <h3>내 정보 수정</h3>
             <div class="nicknametext">
@@ -25,8 +25,8 @@
                 <label for="password">비밀번호 확인</label>
                 <input type="text" id="password">
             </div>
-                <input type="submit" formaction="mypage" value="수정" id="changeinfobtn">
-                <input type="submit" value="취소" id="changeinfocancelbtn">
+                <input type="submit" value="수정" id="changeinfobtn">
+                <input type="submit" formaction="mypage" formmethod="get" value="취소" id="changeinfocancelbtn">
             </div>
         </div>
     </form>
