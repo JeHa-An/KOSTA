@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD COnfig 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.account">
+
+
+	<insert id="insertAccount" parameterType="Account">
+		<![CDATA[
+			INSERT INTO account (id,name,balance,type,grade) VALUES (#{id},#{name},#{balance},#{type},#{grade})
+			]]>
+	</insert>
+
+	<select id="selectAccount" parameterType="String"
+		resultType="Account">
+		<![CDATA[
+			SELECT * FROM account WHERE id = #{id}
+			]]>
+	</select>
+
+	<update id="updateBalance" parameterType="Account">
+		<![CDATA[
+			update account set balance=#{balance} where id=#{id}
+		]]>
+	</update>
+
+	<select id="selectAccountList" resultType="Account">
+			<![CDATA[
+			select * from account order by id
+			]]>
+	</select>
+</mapper>
