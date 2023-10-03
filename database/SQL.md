@@ -353,7 +353,7 @@ left JOIN professor p ON s.profno=p.profno;
 ### Using
 join하는 on의 컬럼명이 같으면 USING(컴럼명)사용
 ### self join
-저가 저산의 테이블에 자신의 테이블을 조인
+자기 자신의 테이블에 자신의 테이블을 조인
 ```sql
 -- emp 테이블을 이용하여 직원의 사번, 이름, 담당 매니저 사번과 이름 조회
 SELECT e1.EMPNO, e1.ENAME, e2.EMPNO, e2.ename
