@@ -58,8 +58,8 @@
 <summary>자세히 보기</summary>
 <div markdown="1">
 
-VS Code : 
-Node.js : 
+VS Code :  <br>
+Node.js :  <br>
 1. 
 
 </div>
