@@ -74,8 +74,8 @@ class MyComponent extends Component {
 }
 ```
 
-? render
-? props
+? render 
+> 뷰가 어떻게 생겼고 어떻게 작동하는 지에 대한 정보를 지닌 객체를 반환 
 
 
 ### DataType
