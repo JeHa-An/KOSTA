@@ -11,7 +11,7 @@
 |java|jdk11.0.20_window|
 |MariaDB|?|
 |Tomcat|apache-tomcat-9.0.80|
-|React(node)|?|
+|React(node)|16.20.2|
 
 </div>
 </details>
@@ -53,13 +53,13 @@
 </div>
 </details>
 
-### [4.React](./React)
+### [4. React](./React)
 <details>
 <summary>자세히 보기</summary>
 <div markdown="1">
 
 VS Code :  <br>
-Node.js :  <br>
+Node.js :  v16.20.2 <br>
 1. 
 
 </div>
