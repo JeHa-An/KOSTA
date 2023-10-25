@@ -1,10 +1,10 @@
 # Func vs Class
-&nbsp;
+&nbsp;라이프사이클 기능을 사용할 수 있다는 것과 임의 메서드를 정의할 수 있다는 것.
 1. this 사용 여부
-2. 
+2. render() 함수 사용 여부
 
 
-## 선언
+## 컴포넌트 생성 방식
 ### App.js
 ```javascript
 import MyComponent from './MyComponent';
@@ -26,11 +26,6 @@ function App() {
       />
       <PropsBoolean BooleanTrueFalse={false}/>
       <PropsBoolean BooleanTrueFalse/>
-      <PropsRequired ReactVersion={501} /><br/>
-      {/* 태그 까지 한 행으로 자식(PropsNode)한테 전달할 수 있다.*/}
-      <PropsNode> 
-        <span>node from App.js</span>
-      </PropsNode>
     </div>
   );
 }
@@ -38,13 +33,14 @@ function App() {
 export default App;
 ```
 
+> import<br>
+&nbsp;~~다른 파일들을 불러와 사용할 수 있다. 모듈을 불러와 사용하는 것은 브라우저에는 없는 기능이지만 Node.js에서 지원하는 기능으로 브라우저가 아닌 환경에서 자바~~
+
 ### Function
-```javascript
+```jsx
 function MyComponent({name, age}) {
-    // 매개 변수로 받지 않는 다른 방식
-    // let {name,age} = props.info;
     return (
-        // return 하는 html은 하나의 태그에 있어야함
+        // return 하는 html은 하나의 부모 태그에 있어야함
         <>
             <h1>{name}</h1>
             <h1>{age}</h1>
@@ -55,6 +51,7 @@ function MyComponent({name, age}) {
 export default MyComponent;
 ```
 &nbsp;
+
 ### Class
 ```javascript
 import React, {Component} from 'react';
@@ -78,91 +75,3 @@ class MyComponent extends Component {
 > 뷰가 어떻게 생겼고 어떻게 작동하는 지에 대한 정보를 지닌 객체를 반환 
 
 
-### DataType
-&nbsp;값을 받아 올때 데이터 타입에 맞게 저장되지 않는 오류가 발생할 수 있다. 그럴 때는 명시적으로 DataType을 정해줘 해결한다.
-```javascript
-import datatype from 'prop-types';
-
-function PropsdataType(props) { 
-    let {String, Number, Boolean, Array, ObjectJson, Function} = props;
-    return (
-        <>
-            <p>StringProps : {String}</p>
-            <p>NumberProps : {Number}</p>
-            <p>BooleanProps : {Boolean.toString()}</p>
-            <p>ArrayProps : {Array.toString()}</p>
-            <p>ObjectJsonProps : {JSON.stringify(ObjectJson)}</p>
-            <p>FunctionProps : {Function}</p>
-        </>
-    )
-}
-
-// 각 데이터 타입을 명시적으로 지정
-PropsdataType.propTypes = {
-    String:datatype.string,
-    Number:datatype.number,
-    Boolean:datatype.bool,
-    Array:datatype.array,
-    ObjectJson:datatype.object,
-    Function:datatype.func
-}
-
-// 생략 시 밖에서 import 불가
-export default PropsdataType;
-```
-
-### 값을 html 태그로 된 행으로 받기
-&nbsp;값이 2개 일대 Json?으로 값이 이어져서 나온다.
-```javascript
-// App.js
-<div className="App">
-    <PropsNode> 
-        <span>node from App.js</span>
-    </PropsNode>
-</div>
-
-// PropsNode.js
-function PropsNode(props) {
-    return(
-        <>
-            <h1>start</h1>
-            {props.children}
-            <h1>end</h1>
-        </>
-    )
-}
-
-export default PropsNode;
-```
-
-### 값 확인 설정
-```javascript
-// App.js
-<div className="App">
- <PropsRequired ReactVersion={501} /><br/>
-</div>
-
-//PropsRequired.js
-import datatype from 'prop-types';
-
-let PropsRequired = ({ReactString, ReactVersion})=> {
-    return(
-        <>
-            {ReactString}{ReactVersion}
-        </>
-    )
-}
-
-// 꼭 가져와야할 변수 설정 없으면 에러 표출
-PropsRequired.propTypes = {
-    ReactString:datatype.string.isRequired,
-}
-
-// 값을 가져오지 못할 때 기본값 지정
-PropsRequired.defaultProps = {
-    ReactString:'리엑트',
-    ReactVersion:501
-}
-
-export default PropsRequired;
-```

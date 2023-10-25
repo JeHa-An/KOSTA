@@ -1,0 +1,2 @@
+npm install --svae reactstrap
+npm install --save bootstrap
