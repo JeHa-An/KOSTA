@@ -1,6 +1,5 @@
-npm install --svae reactstrap && npm install --save bootstrap
+npm install --svae reactstrap && npm install --save bootstrap &&
+npm install --save sweetalert2 && npm install --save react-router && npm install --save react-router-dom
 
-4.4.1
-8.4.1
-
-npm install --save sweetalert2
+"bootstrap": "^4.4.1",
+"reactstrap": "^8.4.1",
