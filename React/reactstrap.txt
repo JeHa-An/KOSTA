@@ -1,2 +1,6 @@
-npm install --svae reactstrap
-npm install --save bootstrap
+npm install --svae reactstrap && npm install --save bootstrap
+
+4.4.1
+8.4.1
+
+npm install --save sweetalert2
