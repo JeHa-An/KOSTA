@@ -33,8 +33,7 @@ function App() {
 export default App;
 ```
 
-> import<br>
-&nbsp;~~다른 파일들을 불러와 사용할 수 있다. 모듈을 불러와 사용하는 것은 브라우저에는 없는 기능이지만 Node.js에서 지원하는 기능으로 브라우저가 아닌 환경에서 자바~~
+
 
 ### Function
 ```jsx
