@@ -3,3 +3,5 @@ npm install --save sweetalert2 && npm install --save react-router && npm install
 
 "bootstrap": "^4.4.1",
 "reactstrap": "^8.4.1",
+
+npm install --save redux, react-redux, @reduxjs-/toolkit
