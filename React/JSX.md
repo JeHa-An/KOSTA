@@ -13,14 +13,14 @@ function App() {
 ```
 
 ## import
-&nbsp;리액트로 만든 프로젝트의 자바스크립트 파일에서 다른 파일을 불러와 사용할 수 있다. 이러한 기능을 사용하기 위해 번들러를 사용합니다. 번들은 파일을 묶는다는 뜻이며,
+&nbsp;react로 만든 프로젝트의 자바스크립트 파일에서 다른 파일을 불러와 사용할 수 있다. 이러한 기능을 사용하기 위해 번들러를 사용합니다. 번들은 파일을 묶는다는 뜻이며,
 번들러 도구를 사용해 모든 모듈을 하나의 JavaScript 파일로 번들링해 브라우저에 로드합니다.
 
-## 장점
+## JSX 장점
 1. 보기 쉽고 익숙하다
 1. 높은 활용도 
 
-## 문법
+## JSX 문법
 
 ### 감싸인 요소
 &nbsp;컴포넌트에 여러 요소가 있다면 반드시 부모 요소 하나로 감싸야 한다.
@@ -34,7 +34,7 @@ function App() {
   )
 }
 ```
-감싸야 하는 이유는 Virtual DOM에서 컴포넌트 변화를 감지할 때 효율적으로 비교하기 위해 컴포넌트 내부는 하나의 DOM 트리 구조로 이루어져야 한다는 규칙이 있다.
+감싸야 하는 이유는 Virtual DOM에서 컴포넌트 변화를 감지할 때 효율적으로 비교하기 위해 컴포넌트 내부는 하나의 DOM 트리 구조로 이루어져야 한다는 규칙이 있기 때문이다.
 <hr>
 
 ### JavaScript 표현
@@ -49,6 +49,7 @@ function App() {
   )
 }
 ```
+
 #### if
 &nbsp;JSX 내부의 자바스크립트 표현식에서 if문을 사용할 수 없다.
 1. JSX 밖에서 if문을 사용하여 사전에 값을 설정
@@ -58,21 +59,19 @@ function App() {
   const name = 'react'
   return(
     <>
-      {name === 'react' ? (
-        <h1>react</h1>
-      ) : null}
+      {name === 'react' ? (<h1>react</h1>) : null}
       {/* && 연산자 */}
       {name === 'react' && <h1>react입니다.</h1>}
   )
 }
 ```
 null을 렌더링하면 아무것도 보여 주지 않는다.<br>
-&& 연산자로 조건부 렌더링 할 수 있는 이유는 리엑트에서 false를 렌더링할 때는 null과 마찬가지로 아무것도 나타나지 않기 때문이며, 예외적으로 0은 예외적으로 화면에 나타난다.
+&& 연산자로 조건부 렌더링 할 수 있는 이유는 react에서 false를 렌더링할 때는 null과 마찬가지로 아무것도 나타나지 않기 때문이다. 예외적으로 0은 화면에 보여준다.
 <hr>
 
 #### undefined를 렌더링하지 않기
 &nbsp;컴포넌트에서 undefined만 반환하여 렌더링하는 상황을 만들면 안 된다. 브라우저에서 에러코드를 발생시킨다. 어떤 값이 undefined일 수 있다면, OR(||) 연산자를 사용해 오류를 방지할 수 있다. 
-1. OR(||) 연산자를 사용해 오류를 방지 <>{name || '리엑트'</>
+1. OR(||) 연산자를 사용해 오류를 방지 <>{ name || '리엑트' }</>
 2. JSX 내부에서 undefined를 렌더링하는 것은 괜찮다.
 ```JSX
 function App() {
@@ -80,7 +79,7 @@ function App() {
   return <>{name}</>
 }
 ```
-
+<hr>
 
 
 #### 인라인 스타일링
@@ -88,9 +87,13 @@ function App() {
 - 스타일 이름 중 margin-top 처럼 - 문자가 포함된 이름의 경우 marginTop과 같이 카멜 표기법으로 작성
 ```JSX
 function App() {
+  const style = {
+    fontSize : '20px',
+    marginTop : '20px'
+  }
   return (
-    <div style={{marginTop : '20px'}}>
-      <h1>hello</h1>
+    <div style={style}>
+      <h1 style={{marginTop : '20px'}}>hello</h1>
     </div>
   )
 }

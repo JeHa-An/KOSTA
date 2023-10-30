@@ -5,7 +5,7 @@
 &nbsp;React는 순수 자바스크립트이며 라이브러리다. 이 자바스크립트를 이용해 컴포넌트를 만들어 나가며, babel을 이용해 순수 자바스크립트로 변환이 된다. 우리가 만든 컴포넌트를 html과 연결하는 작업을 해줘야하는데 이것을 해주는 것이 Virtual DOM이다.
 
 > create-react-app <br>
- 리엑트 프로젝트 생성 시 필요한 webpack, babel 설치 및 설정 과정을 생략하고 간편하게 프로젝트 작업 환경을 구축해주는 도구 (npm create-react-app ProjectName) 
+ 리엑트 프로젝트 생성 시 필요한 webpack, babel을 설치 및 설정 과정을 생략하고 간편하게 프로젝트 작업 환경을 구축해주는 도구 (create-react-app ProjectName) 
 
  ## Virtual DOM
  &nbsp; DOM을 조작할 때마다 엔진이 웹 피이지를 새로 그려 업데이트가 너무 잦으면 성능이 저하 될 수 있다. 그래서 React에서는 Virtual DOM 방식을 사용하여 DOM 업데이트를 추상화함으로써 DOM 처리 횟수를 최소화하고 효율적으로 진행하였다. 
